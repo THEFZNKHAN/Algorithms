@@ -7,7 +7,7 @@ Dynamic Programming (DP) is a method for solving complex problems by breaking th
 1. **Overlapping Subproblems**: The problem can be broken down into smaller, repeating subproblems.
 2. **Optimal Substructure**: The optimal solution of the problem can be constructed from the optimal solutions of its subproblems.
 3. **Memoization**: Storing the results of expensive function calls and reusing them when the same inputs occur again.
-5. **Space Optimization**: Space optimization is a technique used in dynamic programming to reduce the amount of memory used by the algorithm. Instead of storing the results of all subproblems, we only store the results of the most recent subproblems that are necessary to compute the current problem
+4. **Space Optimization**: Space optimization is a technique used in dynamic programming to reduce the amount of memory used by the algorithm. Instead of storing the results of all subproblems, we only store the results of the most recent subproblems that are necessary to compute the current problem.
 
 ### Common DP Problems
 
@@ -16,6 +16,21 @@ Dynamic Programming (DP) is a method for solving complex problems by breaking th
 - Longest Common Subsequence
 - Coin Change Problem
 - Matrix Chain Multiplication
+
+### Solved Questions
+
+Here is a list of dynamic programming problems that I have solved:
+
+1. [Fibonacci Sequence](./src/Fibonacci.java)
+2. [Knapsack Problem](./src/UnboundedKnapsack.java)
+3. [Longest Common Subsequence](./src/LongestCommonSubsequence.java)
+4. [Coin Change Problem](./src/CoinChange.java)
+5. [Matrix Chain Multiplication](./src/)
+6. [Unique Paths](./src/UniquePaths.java)
+7. [Climbing Stairs](./src/)
+8. [Longest Increasing Subsequence](./src/PrintLCS.java)
+9. [Edit Distance](./src/EditDistance.java)
+10. [Partition Equal Subset Sum](./src/)
 
 ### Example
 
