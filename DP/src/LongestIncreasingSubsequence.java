@@ -5,6 +5,9 @@ class LongestIncreasingSubsequence {
         int arr[] = { 10, 9, 2, 5, 3, 7, 101, 18 };
         int n = arr.length;
         System.out.println("The length of the longest increasing subsequence is " + longestIncreasingSubsequence(arr, n));
+
+        int arr2[] = { 10, 9, 2, 5, 3, 7, 101, 18 };
+        System.out.println("The length of the longest increasing subsequence is " + lengthOfLIS(arr2));
     }
 
     static int longestIncreasingSubsequence(int arr[], int n) {
@@ -13,7 +16,7 @@ class LongestIncreasingSubsequence {
         return getAns(arr, n, 0, -1, dp);
     }
 
-    static int getAns(int arr[], int n, int ind, int prev_index, int[][] dp) {
+    private static int getAns(int arr[], int n, int ind, int prev_index, int[][] dp) {
         if (ind == n) return 0;
         if (dp[ind][prev_index + 1] != -1) return dp[ind][prev_index + 1];
 
@@ -26,5 +29,22 @@ class LongestIncreasingSubsequence {
 
         dp[ind][prev_index + 1] = Math.max(notTake, take);
         return dp[ind][prev_index + 1];
+    }
+
+    private static int lengthOfLIS(int[] nums) {
+        int n = nums.length;
+        int dp[][] = new int[n + 1][n + 1];
+
+        for (int ind = n - 1; ind >= 0; ind--) {
+            for (int prev = ind - 1; prev >= -1; prev--) {
+                int skip = dp[ind + 1][prev + 1];
+                int take = 0;
+                if (prev == -1 || nums[ind] > nums[prev]) {
+                    take = 1 + dp[ind + 1][ind + 1];
+                }
+                dp[ind][prev + 1] = Math.max(skip, take);
+            }
+        }
+        return dp[0][0];
     }
 }
