@@ -8,6 +8,9 @@ class LongestIncreasingSubsequence {
 
         int arr2[] = { 10, 9, 2, 5, 3, 7, 101, 18 };
         System.out.println("The length of the longest increasing subsequence is " + lengthOfLIS(arr2));
+
+        int arr3[] = { 10, 9, 2, 5, 3, 7, 101, 18 };
+        System.out.println("The length of the longest increasing subsequence is " + LIS(arr3));
     }
 
     static int longestIncreasingSubsequence(int arr[], int n) {
@@ -46,5 +49,22 @@ class LongestIncreasingSubsequence {
             }
         }
         return dp[0][0];
+    }
+
+    private static int LIS(int[] nums) {
+        int n = nums.length;
+        int dp[] = new int[n];
+        Arrays.fill(dp, 1);
+        int max = 1;
+        for (int i = 1; i < n; i++) {
+            for (int prev = 0; prev < i; prev++) {
+                if (nums[prev] < nums[i]) {
+                    dp[i] = Math.max(dp[i], dp[prev] + 1);
+                }
+            }
+            max = Math.max(max, dp[i]);
+        }
+
+        return max;
     }
 }
