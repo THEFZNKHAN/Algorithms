@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/minimum-recolors-to-get-k-consecutive-black-blocks/description
+
 class MinimumRecolors {
     public static void main(String[] args) {
         MinimumRecolors obj = new MinimumRecolors();
