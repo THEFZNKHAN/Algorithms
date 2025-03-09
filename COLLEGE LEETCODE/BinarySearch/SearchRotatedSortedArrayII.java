@@ -19,15 +19,25 @@ class SearchRotatedSortedArrayII {
         while (s <= e) {
             int mid = s + (e - s) / 2;
 
-            if (nums[mid] == target) return true;
+            if (nums[mid] == target) {
+                return true;
+            }
 
-            if (nums[mid] == nums[e]) e--;
-            else if (nums[mid] > nums[e]) {
-                if (nums[s] <= target && target < nums[mid]) e = mid - 1;
-                else s = mid + 1;
+            if (nums[mid] == nums[e] && nums[mid] == nums[s]) {
+                s++;
+                e--;
+            } else if (nums[mid] > nums[e]) {
+                if (nums[s] <= target && target < nums[mid]) {
+                    e = mid - 1; 
+                }else {
+                    s = mid + 1;
+                }
             } else {
-                if (nums[mid] < target && target <= nums[e]) s = mid + 1;
-                else e = mid - 1;
+                if (nums[mid] < target && target <= nums[e]) {
+                    s = mid + 1; 
+                }else {
+                    e = mid - 1;
+                }
             }
         }
 
