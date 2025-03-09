@@ -21,7 +21,7 @@ class CountNegativeMatrix {
         }
     }
 
-    private static int countNegatives(int[][] grid) {
+    private static int countNegatives_(int[][] grid) {
         int sum = 0;
         for (int[] g : grid) sum += helper(g);
         return sum;
@@ -36,5 +36,17 @@ class CountNegativeMatrix {
             else l = mid + 1;
         }
         return n - l;
+    }
+
+    // OPTIMIZED APPROACH
+    public static int countNegatives(int[][] grid) {
+        int sum = 0, j = 0, i = grid.length - 1, c = grid[0].length;
+        while (i >= 0 &&j < c) {
+            if (grid[i][j] < 0) {
+                sum += grid[0].length - j;
+                i--;
+            } else j++;
+        }
+        return sum;
     }
 }
