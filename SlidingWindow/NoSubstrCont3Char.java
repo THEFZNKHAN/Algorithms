@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/description/
+
 public class NoSubstrCont3Char {
     public static void main(String[] args) {
         String s = "abcabc";
