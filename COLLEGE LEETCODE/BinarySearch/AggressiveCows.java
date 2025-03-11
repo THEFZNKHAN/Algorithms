@@ -10,7 +10,7 @@ class AggressiveCows {
     }
     public static int aggressiveCows(int[] stalls, int k) {
         Arrays.sort(stalls);
-        int max = stalls[stalls.length - 1], ans = 0, s = 0;
+        int max = (stalls[stalls.length - 1] - stalls[0]) / (k - 1), ans = 0, s = 0;
         while (s <= max) {
             int m = s + (max - s) / 2;
             if (helper(stalls, m, k)) {
