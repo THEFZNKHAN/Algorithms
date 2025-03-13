@@ -1,3 +1,5 @@
+package Array;
+
 public class MaximumProductSubarray {
     public static void main(String[] args) {
         MaximumProductSubarray mps = new MaximumProductSubarray();

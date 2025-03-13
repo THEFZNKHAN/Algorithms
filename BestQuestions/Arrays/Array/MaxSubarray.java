@@ -1,3 +1,5 @@
+package Array;
+
 class MaxSubarray {
     public static void main(String[] args) {
         MaxSubarray solution = new MaxSubarray();
