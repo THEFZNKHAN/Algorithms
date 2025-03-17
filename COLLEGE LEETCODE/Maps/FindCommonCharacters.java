@@ -39,9 +39,8 @@ class FindCommonCharacters {
         return arr;
     }
 
-    private static int[] intersection(int[] a, int[] b) {
+    private static void intersection(int[] a, int[] b) {
         for (int i = 0; i < 26; i++) a[i] = Math.min(a[i], b[i]);
-        return a;
     }
 
     private static int[] count(String str) {
