@@ -12,7 +12,6 @@ class GroupOccAnagram {
 
     private static int search(String pat, String txt) {
         int n = txt.length(), m = pat.length();
-        if (m == 0 || n < m) return 0;
 
         int ctr = 0, ans = 0;
         char[] t = txt.toCharArray();
