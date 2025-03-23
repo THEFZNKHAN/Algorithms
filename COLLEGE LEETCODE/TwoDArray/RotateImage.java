@@ -9,7 +9,7 @@ public class RotateImage {
         System.out.println("Original Matrix:");
         printMatrix(matrix);
 
-        rotate180(matrix);
+        rotate(matrix);
 
         System.out.println("Matrix after 180 degree rotation:");
         printMatrix(matrix);
@@ -28,7 +28,7 @@ public class RotateImage {
     public static void rotate(int[][] mat) {
         int n = mat.length;
         for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
+            for (int j = i + 1; j < n; j++) {
                 int temp = mat[i][j];
                 mat[i][j] = mat[j][i];
                 mat[j][i] = temp;
