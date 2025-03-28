@@ -1,3 +1,5 @@
+// https://www.geeksforgeeks.org/problems/flattening-a-linked-list/1
+
 class FlattenLinkedList {
 
     static class Node {
