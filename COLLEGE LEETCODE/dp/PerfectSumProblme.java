@@ -9,6 +9,20 @@ class PerfectSumProblem {
         System.out.println("Perfect Sum using Memoization: " + perfectSum_MEMO(nums, target));
     }
 
+    // USING 1D DP
+    public static int perfectSum_1D(int[] nums, int target) {
+        int[] dp = new int[target + 1];
+        dp[0] = 1;
+
+        for (int num : nums) {
+            for (int sum = target; sum >= num; sum--) {
+                dp[sum] += dp[sum - num];
+            }
+        }
+
+        return dp[target];
+    }
+
     // SPACE OPTIMIZED
     public static int space_optimized(int[] nums, int t) {
         int n = nums.length;
