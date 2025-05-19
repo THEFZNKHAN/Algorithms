@@ -1,8 +1,10 @@
-// https://www.geeksforgeeks.org/problems/activity-selection-1587115620/1
+// https://www.geeksforgeeks.org/problems/n-meetings-in-one-room-1587115620/1
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-class ActivitySelection {
+public class NMeetingsInOneRoom {
     public static void main(String[] args) {
         int[] start = {1, 3, 0, 5, 8, 5};
         int[] finish = {2, 4, 6, 7, 9, 9};
@@ -11,7 +13,7 @@ class ActivitySelection {
         System.out.println("Maximum number of activities: " + maxActivities);
     }
 
-    public int activitySelection(int[] start, int[] finish) {
+    public int maxMeetings(int start[], int finish[]) {
         int n = start.length;
         List<int[]> list = new ArrayList<>();
         for (int i = 0; i < n; i++)  {
@@ -21,11 +23,11 @@ class ActivitySelection {
         Collections.sort(list, (a, b) -> Integer.compare(a[1], b[1]));
 
         int ans = 1;
-        int lastFinish = list.get(0)[1];
+        int last = list.get(0)[1];
         for (int i = 1; i < n; i++) {
-            if (list.get(i)[0] > lastFinish) {
+            if (list.get(i)[0] > last) {
                 ans++;
-                lastFinish = list.get(i)[1];
+                last = list.get(i)[1];
             }
         }
         return ans;
