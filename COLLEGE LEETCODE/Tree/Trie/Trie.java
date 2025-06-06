@@ -1,11 +1,35 @@
 class Trie {
     class TrieNode {
-        TrieNode[] arr;
+        TrieNode[] child;
         boolean isEnd;
 
         public TrieNode() {
-            arr = new TrieNode[26];
+            child = new TrieNode[26];
             isEnd = false;
+        }
+
+        public boolean containsKey(char c) {
+            return child[c - 'a'] != null;
+        }
+
+        public TrieNode get(char c) {
+            return child[c - 'a'];
+        }
+
+        public void put(char c, TrieNode node) {
+            child[c - 'a'] = node;
+        }
+
+        public void put(char c) {
+            child[c - 'a'] = new TrieNode();
+        }
+
+        public void setEnd() {
+            isEnd = true;
+        }
+
+        public boolean isEnd() {
+            return isEnd;
         }
     }
 
@@ -16,37 +40,28 @@ class Trie {
     }
 
     public void insert(String word) {
-        int n = word.length();
         TrieNode temp = root;
-        for (int i = 0; i < n; i++) {
-            int idx = word.charAt(i) - 'a';
-            if (temp.arr[idx] == null)
-                temp.arr[idx] = new TrieNode();
-            temp = temp.arr[idx];
+        for (char c : word.toCharArray()) {
+            if (!temp.containsKey(c)) temp.put(c);
+            temp.get(c); // temp = temp.child[c];
         }
-        temp.isEnd = true;
+        temp.setEnd();
     }
 
     public boolean search(String word) {
-        int n = word.length();
         TrieNode temp = root;
-        for (int i = 0; i < n; i++) {
-            int idx = word.charAt(i) - 'a';
-            if (temp.arr[idx] == null)
-                return false;
-            temp = temp.arr[idx];
+        for (char c : word.toCharArray()) {
+            if (!temp.containsKey(c)) return false;
+            temp.get(c);
         }
-        return temp.isEnd;
+        return temp.isEnd();
     }
 
-    public boolean startsWith(String word) {
-        int n = word.length();
+    public boolean startsWith(String prefix) {
         TrieNode temp = root;
-        for (int i = 0; i < n; i++) {
-            int idx = word.charAt(i) - 'a';
-            if (temp.arr[idx] == null)
-                return false;
-            temp = temp.arr[idx];
+        for (char c : prefix.toCharArray()) {
+            if (!temp.containsKey(c)) return false;
+            temp.get(c);
         }
         return true;
     }
