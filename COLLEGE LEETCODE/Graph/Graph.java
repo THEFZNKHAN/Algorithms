@@ -5,8 +5,8 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class Graph {
-    private static List<List<Integer>> adj;
-    private static int size;
+    private List<List<Integer>> adj;
+    private int size;
 
     public Graph() {
         adj = new ArrayList<>();
@@ -14,7 +14,7 @@ public class Graph {
     }
 
     private void addNode(int u) {
-        adj.add(u, new ArrayList<>());
+        adj.add(new ArrayList<>());
         size++;
     }
 
@@ -49,6 +49,14 @@ public class Graph {
         System.out.println();
     }
 
+    private void dfs(int s, boolean[] visited) {
+        visited[s] = true;
+        System.out.print(s + "-");
+        for (int neigh : adj.get(s)) {
+            if  (!visited[neigh]) dfs(neigh, visited);
+        }
+    }
+
     public static void main(String[] args) {
         Graph graph = new Graph();
         try (Scanner sc = new Scanner(System.in)) {
@@ -72,6 +80,10 @@ public class Graph {
             graph.bfs();
 
             graph.print();
+
+            System.out.println("\nDFS traversal starting from node 0:");
+            boolean[] visited = new boolean[n];
+            graph.dfs(0, visited);
         }
     }
 }
