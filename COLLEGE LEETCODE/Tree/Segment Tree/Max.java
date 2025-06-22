@@ -2,14 +2,10 @@ public class Max {
     private static int[] arr;
     private static int[] seg;
 
-    public Max(int n) {
-        arr = new int[n];
-        seg = new int[4 * n];
-    }
-
     public static void main(String[] args) {
         int n = 6;
-        Max tree = new Max(n);
+        arr = new int[n];
+        seg = new int[4 *  n];
         arr = new int[] { 1, 3, 5, 7, 9, 11 };
         build(0, n - 1, 0);
         System.out.println("Max in range [1, 4]: " + max(0, 0, n - 1, 1, 4));
@@ -40,18 +36,14 @@ public class Max {
         return Math.max(left, right);
     }
 
-    private static void update(int idx, int low, int high, int i, int nv) {
+    private static void update(int node, int low, int high, int pos, int val) {
         if (low == high) {
-            arr[i] = nv;
-            seg[idx] = nv;
+            seg[node] = val;
         } else {
             int mid = low + (high - low) / 2;
-            if (i >= low && i <= mid) {
-                update(2 * idx + 1, low, mid, i, nv);
-            } else {
-                update(2 * idx + 2, mid + 1, high, i, nv);
-            }
-            seg[idx] = Math.max(seg[2 * idx + 1], seg[2 * idx + 2]);
+            if (pos <= mid) update(2 * node + 1, low, mid, pos, val);
+            else update(2 * node + 2, mid + 1, high, pos, val);
+            seg[node] = Math.max(seg[2 * node + 1], seg[2 * node + 2]);
         }
     }
 }
